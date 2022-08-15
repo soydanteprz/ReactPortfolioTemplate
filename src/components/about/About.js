@@ -3,6 +3,7 @@ import Style from './About.module.scss';
 import Terminal from "./Terminal";
 import {Box} from "@mui/material";
 import {info} from "../../info/Info";
+import WordCloud from './Skills'; 
 
 
 export default function About() {
@@ -27,11 +28,11 @@ export default function About() {
                 className={Style.green}>(main)</span> $</span> ls</p>
             <p style={{color: info.baseColor}}> Proficient With</p>
             <ul className={Style.skills}>
-                {info.skills.proficientWith.map((proficiency, index) => <li key={index}>{proficiency}</li>)}
+                {info.skills.proficientWith.map(proficiency => <li>{proficiency}</li>)}
             </ul>
             <p style={{color: info.baseColor}}> Exposed To</p>
             <ul className={Style.skills}>
-                {info.skills.exposedTo.map((skill, index) => <li key={index}>{skill}</li>)}
+                {info.skills.exposedTo.map(skill => <li>{skill}</li>)}
             </ul>
         </>;
     }
@@ -43,8 +44,8 @@ export default function About() {
             <p><span style={{color: info.baseColor}}>hobbies/interests <span
                 className={Style.green}>(main)</span> $</span> ls</p>
             <ul>
-                {info.hobbies.map((hobby, index) => (
-                    <li key={index}><Box component={'span'} mr={'1rem'}>{hobby.emoji}</Box>{hobby.label}</li>
+                {info.hobbies.map(hobby => (
+                    <li><Box component={'span'} mr={'1rem'}>{hobby.emoji}</Box>{hobby.label}</li>
                 ))}
             </ul>
         </>;
@@ -55,6 +56,7 @@ export default function About() {
             <Terminal text={aboutMeText()}/>
             <Terminal text={skillsText()}/>
             <Terminal text={miscText()}/>
+            <WordCloud/>
         </Box>
     )
 }

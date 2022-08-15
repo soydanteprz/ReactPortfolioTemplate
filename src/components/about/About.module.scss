@@ -1,21 +1,41 @@
 @import "../../variables.modules";
 
 .pink {
-  color: $pink;
+    color: $pink;
 }
 
 .green {
-  color: $green;
+    color: $green;
 }
 
 .skills {
-  columns: 1;
-  @media only screen and (min-width: 940px) {
-    columns: 2;
-  }
+    columns: 1;
+    @media only screen and (min-width: 940px) {
+        columns: 2;
+    }
 
-  li {
-    margin: 0;
-    line-height: 1.75;
-  }
+    li {
+        margin: 0;
+        line-height: 1.75;
+    }
+}
+
+//Skills WordCloud style
+.tagcloud-wrap {
+    // background: gray;
+    float: right;
+    width: 53%;
+    height: 115%;
+    margin-top: -3%;
+
+    .tagcloud {
+        color: #ff4500;
+        font-family: "Poppins", sans-serif;
+        font-size: 20px;
+        font-weight: 650;
+        margin: 10% auto;
+    }
+    .tagcloud--item:hover {
+        color: #00ff7f;
+    }
 }

@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Style from "./Navbar.module.scss";
 import Toggler from "./home/Toggler";
 import { Link, useLocation } from "react-router-dom";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import { Box } from "@mui/material";
 import { info } from "../info/Info";
 
+/*
 const links = [
     {
-        name: "Home",
-        to: "/",
+        name: "<Home>",
+        to: "",
         active: "home",
     },
     {
-        name: "About Me",
+        name: "<About Me>",
         to: "/about",
         active: "about",
     },
@@ -23,53 +25,106 @@ const links = [
         active: "home",
     },
     {
-        name: "Portfolio",
+        name: "<Portfolio>",
         to: "/portfolio",
         active: "portfolio",
     },
 ];
-
-export default function Navbar({ darkMode, handleClick }) {
+*/
+export default function NavBar({ darkMode, handleClick }) {
+    /*
     const location = useLocation();
     const [active, setActive] = useState(
         location.pathname === "/"
             ? "home"
             : location.pathname.slice(1, location.pathname.length)
     );
+    */
+
+    const [activeLink, setActiveLink] = useState("home");
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => {
+            if (window.scrollY > 50) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", onScroll);
+
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    const onUpdateActiveLink = (value) => {
+        setActiveLink(value);
+    };
 
     return (
-        <Box component={"nav"} width={"100%"}>
+        <Box
+            component={"nav"}
+            width={"100%"}
+            className={scrolled ? "scrolled" : ""}
+        >
             <Box
                 component={"ul"}
                 display={"flex"}
                 justifyContent={"center"}
                 alignItems={"center"}
                 gap={{ xs: "2rem", md: "8rem" }}
-                textTransform={"lowercase"}
+                textTransform={"none"}
                 fontSize={"1rem"}
             >
-                {links.map((link, index) => (
-                    <Box
-                        key={index}
-                        component={"li"}
+                <Box
+                    component={"li"}
+                    display={"flex"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    gap={{ xs: "2rem", md: "8rem" }}
+                    textTransform={"none"}
+                    fontSize={"1rem"}
+                    sx={{ borderImageSource: info.gradient }}
+                    className={Style.active}
+                >
+                    <Nav.Link
+                        href="#home"
                         className={
-                            link.active === active && !link.type && Style.active
+                            activeLink === "home"
+                                ? "active navbar-link"
+                                : "navbar-link"
                         }
-                        sx={{ borderImageSource: info.gradient }}
+                        onClick={() => onUpdateActiveLink("home")}
                     >
-                        <Link
-                            to={link.to}
-                            onClick={() => setActive(link.active)}
-                        >
-                            {!link.type && (
-                                <p style={{ paddingBottom: "0.5rem" }}>
-                                    {link.name}
-                                </p>
-                            )}
-                            {link.type && <h1>{link.name}</h1>}
-                        </Link>
-                    </Box>
-                ))}
+                        {" "}
+                        <p style={{ paddingBottom: "0.5rem" }}>Home</p>
+                    </Nav.Link>
+                    <Nav.Link
+                        href="#about"
+                        className={
+                            activeLink === "about"
+                                ? "active navbar-link"
+                                : "navbar-link"
+                        }
+                        onClick={() => onUpdateActiveLink("about")}
+                    >
+                        {" "}
+                        <p style={{ paddingBottom: "0.5rem" }}>About</p>
+                    </Nav.Link>
+                    <Nav.Link
+                        href="#portfolio"
+                        className={
+                            activeLink === "portfolio"
+                                ? "active navbar-link"
+                                : "navbar-link"
+                        }
+                        onClick={() => onUpdateActiveLink("portfolio")}
+                    >
+                        {" "}
+                        <p style={{ paddingBottom: "0.5rem" }}>Portfolio</p>
+                    </Nav.Link>
+                </Box>
                 <li>
                     <Toggler darkMode={darkMode} handleClick={handleClick} />
                 </li>

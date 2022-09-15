@@ -113,7 +113,7 @@ export const info = {
             image: mock1,
         },
         {
-            title: "Project 2",
+            title: "Stream Service",
             live: "https://github.com/soydanteprz/TC1030",
             source: "https://github.com/soydanteprz/TC1030",
             image: mock2,

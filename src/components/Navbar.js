@@ -31,6 +31,7 @@ const links = [
     },
 ];
 */
+
 export default function NavBar({ darkMode, handleClick }) {
     /*
     const location = useLocation();
@@ -69,7 +70,7 @@ export default function NavBar({ darkMode, handleClick }) {
             className={scrolled ? "scrolled" : ""}
         >
             <Box
-                component={"ul"}
+                component={"li"}
                 display={"flex"}
                 justifyContent={"center"}
                 alignItems={"center"}
@@ -124,10 +125,8 @@ export default function NavBar({ darkMode, handleClick }) {
                         {" "}
                         <p style={{ paddingBottom: "0.5rem" }}>Portfolio</p>
                     </Nav.Link>
-                </Box>
-                <li>
                     <Toggler darkMode={darkMode} handleClick={handleClick} />
-                </li>
+                </Box>
             </Box>
         </Box>
     );

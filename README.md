@@ -155,3 +155,9 @@ please don't hesitate to reach out -- I will always happily accept constructive 
 [6](https://www.keyrxng.xyz/)
 
 [7](https://ellerman4.github.io/ellerman4_portfolio/)
+
+---
+#### How to deploy to github pages
+npm run build
+
+npm run deploy

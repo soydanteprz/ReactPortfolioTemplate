@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Style from "./About.module.scss";
 import Terminal from "./Terminal";
 import { Box } from "@mui/material";
 import { info } from "../../info/Info";
+import { Fade, Zoom, Slide } from '@mui/material';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
 import WordCloud from "./Skills";
 
 export default function About() {
     const firstName = info.firstName.toLowerCase();
+    //const [scrolling, setScrolling] = useState(false);
+    //const trigger = useScrollTrigger();
+   // const [scrolled, setScrolled] = useState(true);
+   /*
+    const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+    disableHysteresis: true,
+    threshold: 100,
+});
+*/
+
+
+
 
     function aboutMeText() {
         return (
@@ -95,15 +110,15 @@ export default function About() {
 
     return (
         <Box
-            display={"flex"}
+            display={'flex'}
             flexDirection={"column"}
             alignItems={"center"}
             mt={"3rem"}
             id={"about"}
         >
             <Terminal text={aboutMeText()} />
-            <Terminal text={skillsText()} />
             <Terminal text={miscText()} />
+            <Terminal text={skillsText()} />
             <WordCloud />
         </Box>
     );

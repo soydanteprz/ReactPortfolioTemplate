@@ -4,7 +4,6 @@ import NavBar from "./Navbar";
 import Home from "./home/Home";
 import About from "./about/About";
 import Portfolio from "./portfolio/Portfolio";
-import { Route, Routes } from "react-router-dom";
 import { Box, Grid } from "@mui/material";
 
 export default function BaseLayout() {
@@ -42,7 +41,7 @@ export default function BaseLayout() {
                         width={"100%"}
                     >
                         <p>Dante Pérez 2022 Copyright &copy;</p>
-                        <p>Dante Pérez´s website is Powered by React Appp</p>
+                        <p>Dante Pérez´s website is Powered by React App</p>
                         <p>&copy; 2022</p>
                     </Box>
                 </Grid>
